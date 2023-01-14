@@ -7,7 +7,7 @@ import HomePage from "./Pages/HomePage";
 const App = () => {
 	return (
 		<BrowserRouter>
-			<div className="min-h-screen">
+			<div className="min-h-screen pt-8">
 				<Header />
 				<Routes>
 					<Route path="/" element={<HomePage />} exact />

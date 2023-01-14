@@ -4,14 +4,14 @@ import React from "react";
 const Header = () => {
 	return (
 		<Navbar className="container mx-auto" fluid={true} rounded={true}>
-			<Navbar.Brand href="https://flowbite.com/">
+			<Navbar.Brand href="#">
 				<img
-					src="https://flowbite.com/docs/images/logo.svg"
+					src="https://purepng.com/public/uploads/large/purepng.com-weather-icon-ios-7symbolsiconsapple-iosiosios-7-iconsios-7-721522596694capb5.png"
 					className="mr-3 h-6 sm:h-9"
-					alt="Flowbite Logo"
+					alt="Weather App Logo"
 				/>
-				<span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-					Flowbite
+				<span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white">
+					Weather App
 				</span>
 			</Navbar.Brand>
 			<Navbar.Toggle />
