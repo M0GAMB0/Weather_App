@@ -11,15 +11,14 @@ let navigation = [
 const Header = () => {
 	const history = useNavigate();
 	const [navBar, setNavBar] = useState(navigation);
+
 	const changeActiveStatus = (key, href) => {
 		navBar.forEach((items) => (items.isActive = false));
 		navBar[key - 1].isActive = true;
 		setNavBar(navBar);
 		return history(href);
 	};
-	const hover = (e) => {
-		e.target.style.borderBottom = "2px solid #ffc100";
-	};
+
 	return (
 		<Navbar className="" fluid={true} rounded={true}>
 			<Navbar.Brand href="#">
