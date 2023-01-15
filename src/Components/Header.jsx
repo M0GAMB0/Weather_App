@@ -1,17 +1,25 @@
 import { Navbar } from "flowbite-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const navigation = [
-	{ name: "Home", href: `/`, isActive: true },
-	{ name: "About Us", href: `/AboutUs`, isActive: false },
-	{ name: "Services", href: `/Services`, isActive: false },
-	{ name: "Pricing", href: `/Pricing`, isActive: false },
-	{ name: "Contact", href: `/Contact`, isActive: false },
+let navigation = [
+	{ key: 1, name: "Home", href: `/`, isActive: true },
+	{ key: 2, name: "About Us", href: `/AboutUs`, isActive: false },
+	{ key: 3, name: "Services", href: `/Services`, isActive: false },
+	{ key: 4, name: "Pricing", href: `/Pricing`, isActive: false },
+	{ key: 5, name: "Contact", href: `/Contact`, isActive: false },
 ];
 const Header = () => {
 	const history = useNavigate();
-	var temp = 1;
 	const [navBar, setNavBar] = useState(navigation);
+	const changeActiveStatus = (key, href) => {
+		navBar.forEach((items) => (items.isActive = false));
+		navBar[key - 1].isActive = true;
+		setNavBar(navBar);
+		return history(href);
+	};
+	const hover = (e) => {
+		e.target.style.borderBottom = "2px solid #ffc100";
+	};
 	return (
 		<Navbar className="" fluid={true} rounded={true}>
 			<Navbar.Brand href="#">
@@ -26,30 +34,30 @@ const Header = () => {
 			</Navbar.Brand>
 			<Navbar.Toggle />
 			<Navbar.Collapse>
-				{/* <Navbar.Link onClick={() => history(`/`)} className="text-base">
-					Home
-				</Navbar.Link>
-				<Navbar.Link
-					onClick={() => history(`/AboutUs`)}
-					className="text-base"
-					style={{ color: "#fac305" }}
-				>
-					About
-				</Navbar.Link>
-				<Navbar.Link href="#" className="text-base">
-					Services
-				</Navbar.Link>
-				<Navbar.Link href="#" className="text-base">
-					Pricing
-				</Navbar.Link>
-				<Navbar.Link href="#" className="text-base">
-					Contact
-				</Navbar.Link> */}
-				{navBar.map((items) => {
-					<Navbar.Link key={items.name} href={items.href}>
-						Pricing
-					</Navbar.Link>;
-				})}
+				{navBar.map((items) => (
+					<Navbar.Link
+						key={items.key}
+						active={items.isActive}
+						onClick={() => changeActiveStatus(items.key, items.href)}
+						onMouseOver={(e) => {
+							e.target.style.borderBottom = "2px solid #ffc100";
+						}}
+						onMouseOut={(e) => {
+							e.target.style.borderBottom = items.isActive
+								? "2px solid #ffc100"
+								: "none";
+						}}
+						style={{
+							color: "#000",
+							fontSize: "1rem",
+							lineHeight: "1.5rem",
+							padding: "5px 10px",
+							borderBottom: items.isActive ? "2px solid #ffc100" : "none",
+						}}
+					>
+						{items.name}
+					</Navbar.Link>
+				))}
 			</Navbar.Collapse>
 		</Navbar>
 	);
