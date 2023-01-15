@@ -10,6 +10,7 @@ const HomePage = () => {
 				src={home}
 				width="550px"
 				height="100%"
+
 				// className="border-2 border-solid border-red-800 p-0"
 			/>
 		</div>

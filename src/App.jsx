@@ -7,7 +7,7 @@ import "./App.css";
 const App = () => {
 	return (
 		<BrowserRouter>
-			<div className="min-h-screen pt-8">
+			<div className="container mx-auto min-h-screen pt-8">
 				<Header />
 				<Routes>
 					<Route path="/" element={<HomePage />} exact />

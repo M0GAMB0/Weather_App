@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
 	const history = useNavigate();
 	return (
-		<Navbar className="container mx-auto" fluid={true} rounded={true}>
+		<Navbar className="" fluid={true} rounded={true}>
 			<Navbar.Brand href="#">
 				<img
 					src="https://cdn4.iconfinder.com/data/icons/weather-yellow/60/001_-_Sunny_Cloudy-512.png"
