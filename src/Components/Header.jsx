@@ -1,9 +1,17 @@
 import { Navbar } from "flowbite-react";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+const navigation = [
+	{ name: "Home", href: `/`, isActive: true },
+	{ name: "About Us", href: `/AboutUs`, isActive: false },
+	{ name: "Services", href: `/Services`, isActive: false },
+	{ name: "Pricing", href: `/Pricing`, isActive: false },
+	{ name: "Contact", href: `/Contact`, isActive: false },
+];
 const Header = () => {
 	const history = useNavigate();
+	var temp = 1;
+	const [navBar, setNavBar] = useState(navigation);
 	return (
 		<Navbar className="" fluid={true} rounded={true}>
 			<Navbar.Brand href="#">
@@ -18,14 +26,14 @@ const Header = () => {
 			</Navbar.Brand>
 			<Navbar.Toggle />
 			<Navbar.Collapse>
-				<Navbar.Link
-					onClick={() => history(`/`)}
-					className="text-base"
-					active={true}
-				>
+				{/* <Navbar.Link onClick={() => history(`/`)} className="text-base">
 					Home
 				</Navbar.Link>
-				<Navbar.Link onClick={() => history(`/AboutUs`)} className="text-base">
+				<Navbar.Link
+					onClick={() => history(`/AboutUs`)}
+					className="text-base"
+					style={{ color: "#fac305" }}
+				>
 					About
 				</Navbar.Link>
 				<Navbar.Link href="#" className="text-base">
@@ -36,7 +44,12 @@ const Header = () => {
 				</Navbar.Link>
 				<Navbar.Link href="#" className="text-base">
 					Contact
-				</Navbar.Link>
+				</Navbar.Link> */}
+				{navBar.map((items) => {
+					<Navbar.Link key={items.name} href={items.href}>
+						Pricing
+					</Navbar.Link>;
+				})}
 			</Navbar.Collapse>
 		</Navbar>
 	);
