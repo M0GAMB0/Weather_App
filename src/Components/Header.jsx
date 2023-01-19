@@ -1,6 +1,7 @@
 import { Navbar } from "flowbite-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
 let navigation = [
 	{ key: 1, name: "Home", href: `/`, isActive: true },
 	{ key: 2, name: "About Us", href: `/AboutUs`, isActive: false },
@@ -22,11 +23,7 @@ const Header = () => {
 	return (
 		<Navbar className="" fluid={true} rounded={true}>
 			<Navbar.Brand href="#">
-				<img
-					src="https://cdn4.iconfinder.com/data/icons/weather-yellow/60/001_-_Sunny_Cloudy-512.png"
-					className="mr-3 h-6 sm:h-9"
-					alt="Weather App Logo"
-				/>
+				<img src={logo} className="mr-3 h-6 sm:h-9" alt="Weather App Logo" />
 				<span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white">
 					Weather App
 				</span>
