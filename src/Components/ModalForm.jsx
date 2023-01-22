@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Label, Modal, Toast } from "flowbite-react";
+import { Label, Modal } from "flowbite-react";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { GEO_API_URL, geoApiOptions } from "../Config/api";
 import { toast } from "react-toastify";
-const ModalForm = ({ show, setShow, onSearchChange }) => {
+import { WeatherState } from "../WeatherContext";
+const ModalForm = ({ show, setShow }) => {
 	const [search, setSearch] = useState(null);
+	const { setCity } = WeatherState();
 	const handleOnChange = (searchData) => {
 		setSearch(searchData);
-		onSearchChange(searchData);
+		setCity(searchData);
 	};
 	const loadOptions = async (inputValue) => {
 		try {

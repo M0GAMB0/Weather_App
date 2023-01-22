@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalForm from "./ModalForm";
 
-const LocatForm = ({ onSearchChange }) => {
+const LocatForm = () => {
 	const [show, setShow] = useState(false);
 	return (
 		<div className="flex flex-col justify-between items-start">
@@ -12,11 +12,7 @@ const LocatForm = ({ onSearchChange }) => {
 			<button onClick={() => setShow(true)} className="text-xl px-10 mt-7">
 				Get Started
 			</button>
-			<ModalForm
-				show={show}
-				setShow={setShow}
-				onSearchChange={onSearchChange}
-			/>
+			<ModalForm show={show} setShow={setShow} />
 		</div>
 	);
 };
