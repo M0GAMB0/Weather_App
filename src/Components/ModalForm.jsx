@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Label, Modal } from "flowbite-react";
+import { Label, Modal, Toast } from "flowbite-react";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { GEO_API_URL, geoApiOptions } from "../Config/api";
+import { toast } from "react-toastify";
 const ModalForm = ({ show, setShow, onSearchChange }) => {
 	const [search, setSearch] = useState(null);
 	const handleOnChange = (searchData) => {
@@ -24,7 +25,7 @@ const ModalForm = ({ show, setShow, onSearchChange }) => {
 				}),
 			};
 		} catch (err) {
-			return console.error(err);
+			console.log("Error");
 		}
 	};
 	const handleOnclick = () => {
@@ -38,6 +39,7 @@ const ModalForm = ({ show, setShow, onSearchChange }) => {
 		console.log(position);
 	};
 	const onError = (err) => {
+		toast.error("You denied permission to device location");
 		console.log(err);
 	};
 	return (

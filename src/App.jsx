@@ -4,6 +4,7 @@ import Header from "./Components/Header";
 import AboutUs from "./Pages/AboutUs";
 import HomePage from "./Pages/HomePage";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
 const App = () => {
 	const handleOnSearchChange = (searchData) => {
 		console.log(searchData);
@@ -21,6 +22,18 @@ const App = () => {
 					<Route path="/AboutUs" element={<AboutUs />} />
 				</Routes>
 			</div>
+			<ToastContainer
+				position="bottom-left"
+				autoClose={3000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="light"
+			/>
 		</BrowserRouter>
 	);
 };
