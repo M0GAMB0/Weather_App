@@ -1,22 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { Label, Modal, TextInput } from "flowbite-react";
-const ModalForm = ({ show, setShow }) => {
+import { AsyncPaginate } from "react-select-async-paginate";
+import { GEO_API_URL, geoApiOptions } from "../Config/api";
+const ModalForm = ({ show, setShow, onSearchChange }) => {
+	const [search, setSearch] = useState(null);
+	const handleOnChange = (searchData) => {
+		setSearch(searchData);
+		onSearchChange(searchData);
+	};
+	const loadOptions = async (inputValue) => {
+		try {
+			const response = await fetch(
+				`${GEO_API_URL}/cities?namePrefix=${inputValue}`,
+				geoApiOptions
+			);
+			const response_1 = await response.json();
+			return {
+				options: response_1.data.map((city) => {
+					return {
+						value: `${city.latitude} ${city.longitude}`,
+						label: `${city.name} ${city.countryCode}`,
+					};
+				}),
+			};
+		} catch (err) {
+			return console.error(err);
+		}
+	};
 	return (
 		<Modal show={show} size="md" popup={true} onClose={() => setShow(false)}>
 			<Modal.Header />
 			<Modal.Body>
 				<div className="space-y-6 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8">
-					<h1 className="text-xl font-medium text-gray-900 dark:text-white">
+					<h1 className="text-2xl font-medium text-gray-900 dark:text-white">
 						Enter your City
 					</h1>
 					<div>
 						<div className="mb-2 block">
 							<Label htmlFor="location" value="Please Enter Valid City Name" />
 						</div>
-						<TextInput
-							id="location"
-							placeholder="Your Location"
-							required={true}
+						<AsyncPaginate
+							placeholder="Search for a City"
+							debounceTimeout={1000}
+							value={search}
+							className="text-black"
+							onChange={handleOnChange}
+							loadOptions={loadOptions}
 						/>
 					</div>
 					<div>

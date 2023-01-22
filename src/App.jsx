@@ -5,12 +5,19 @@ import AboutUs from "./Pages/AboutUs";
 import HomePage from "./Pages/HomePage";
 import "./App.css";
 const App = () => {
+	const handleOnSearchChange = (searchData) => {
+		console.log(searchData);
+	};
 	return (
 		<BrowserRouter>
 			<div className="container mx-auto min-h-screen pt-8">
 				<Header />
 				<Routes>
-					<Route path="/" element={<HomePage />} exact />
+					<Route
+						path="/"
+						element={<HomePage onSearchChange={handleOnSearchChange} />}
+						exact
+					/>
 					<Route path="/AboutUs" element={<AboutUs />} />
 				</Routes>
 			</div>

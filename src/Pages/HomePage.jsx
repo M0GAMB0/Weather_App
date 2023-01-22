@@ -2,10 +2,10 @@ import React from "react";
 import LocatForm from "../Components/LocatForm";
 import home from "../assets/homecrop.png";
 
-const HomePage = () => {
+const HomePage = ({ onSearchChange }) => {
 	return (
 		<div className="container mx-auto flex justify-between items-center pt-8 px-10 h-full">
-			<LocatForm />
+			<LocatForm onSearchChange={onSearchChange} />
 			<img
 				src={home}
 				width="550px"
