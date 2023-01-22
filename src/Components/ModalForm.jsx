@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Label, Modal, TextInput } from "flowbite-react";
+import { Label, Modal } from "flowbite-react";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { GEO_API_URL, geoApiOptions } from "../Config/api";
 const ModalForm = ({ show, setShow, onSearchChange }) => {
@@ -27,6 +27,19 @@ const ModalForm = ({ show, setShow, onSearchChange }) => {
 			return console.error(err);
 		}
 	};
+	const handleOnclick = () => {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(onSucces, onError);
+		} else {
+			alert("Your Browser doesnot support geolocation api");
+		}
+	};
+	const onSucces = (position) => {
+		console.log(position);
+	};
+	const onError = (err) => {
+		console.log(err);
+	};
 	return (
 		<Modal show={show} size="md" popup={true} onClose={() => setShow(false)}>
 			<Modal.Header />
@@ -51,7 +64,10 @@ const ModalForm = ({ show, setShow, onSearchChange }) => {
 					<div>
 						<h1 className="text-center">OR</h1>
 					</div>
-					<button className="text-xl text-center w-full">
+					<button
+						onClick={handleOnclick}
+						className="text-xl text-center w-full"
+					>
 						Get Device Location
 					</button>
 				</div>
