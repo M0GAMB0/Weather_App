@@ -2,6 +2,7 @@ import React from "react";
 import partlyCloudy from "../assets/partly_Cloudy.png";
 import logo from "../assets/icon.png";
 import MiniCard from "./MiniCard";
+import locIcon from "../assets/loc.png";
 const Card = () => {
 	return (
 		<div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
@@ -31,7 +32,10 @@ const Card = () => {
 							What's the weather.
 						</h2>
 					</div>
-					{/* <p className="text-grey-darker text-sm">11/1/19</p> */}
+					<div className="flex ml-auto items-center">
+						<p className="text-grey-darker text-sm font-bold mr-1">Mumbai</p>
+						<img src={locIcon} height="27px" width="27px" />
+					</div>
 				</header>
 				<main className="flex items-start flex-col justify-between p-2 ml-2 md:p-4">
 					<h1

@@ -6,10 +6,10 @@ import { toast } from "react-toastify";
 import { WeatherState } from "../WeatherContext";
 const ModalForm = ({ show, setShow }) => {
 	const [search, setSearch] = useState(null);
-	const { setCity } = WeatherState();
+	const { change } = WeatherState();
 	const handleOnChange = (searchData) => {
 		setSearch(searchData);
-		setCity(searchData);
+		change(searchData);
 	};
 	const loadOptions = async (inputValue) => {
 		try {
