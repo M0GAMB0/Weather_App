@@ -10,7 +10,7 @@ import WeatherDisplay from "./Pages/WeatherDisplay";
 const App = () => {
 	return (
 		<BrowserRouter>
-			<div className="container mx-auto min-h-screen pt-8">
+			<div className=" min-h-screen pt-8">
 				<Header />
 				<Routes>
 					<Route path="/" element={<HomePage />} exact />

@@ -2,9 +2,12 @@ import React from "react";
 
 const MiniCard = ({ bg, label, lvalue, color }) => {
 	return (
-		<div className="my-1 md:my-0.5 px-1 w-full md:w-2/12 lg:my-4 lg:px-4 lg:w-1/3 md:px-0">
+		<div
+			className="my-1 md:my-0.5 px-1 w-1/3 lg:my-4 lg:px-4 md:px-0 flex justify-center items-center"
+			// style={{ border: "2px solid red" }}
+		>
 			<article
-				className="overflow-hidden rounded-2xl shadow-2xl md:w-10/12 sm:w-7/12 lg:w-auto"
+				className="overflow-hidden rounded-2xl w-2/3 py-4 md:py-2 lg:py-0 lg:w-full shadow-2xl"
 				style={{ backgroundColor: bg }}
 			>
 				<header className="flex flex-col items-center justify-between leading-tight lg:p-3 md:p-3">

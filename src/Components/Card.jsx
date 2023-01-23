@@ -43,7 +43,7 @@ const Card = () => {
 					</h1>
 					<h1 className="pt-1 text-lg font-medium">Partly Cloudy</h1>
 				</main>
-				<footer className="flex items-center justify-center leading-none  md:px-2 lg:px-0">
+				<footer className="flex items-center justify-between leading-none  md:px-2 lg:px-0">
 					{/* <a
 						className="flex items-center no-underline hover:underline text-black"
 						href="#"
