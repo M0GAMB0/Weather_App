@@ -6,6 +6,7 @@ import AboutUs from "./Pages/AboutUs";
 import HomePage from "./Pages/HomePage";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
+import WeatherDisplay from "./Pages/WeatherDisplay";
 const App = () => {
 	return (
 		<BrowserRouter>
@@ -14,6 +15,7 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<HomePage />} exact />
 					<Route path="/AboutUs" element={<AboutUs />} />
+					<Route path="/WeatherDisplay" element={<WeatherDisplay />} />
 				</Routes>
 			</div>
 			<ToastContainer
