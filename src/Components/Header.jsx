@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 let navigation = [
-	{ key: 1, name: "Home", href: `/`, isActive: true },
+	{ key: 1, name: "Home", href: `/Weather_App`, isActive: true },
 	{ key: 2, name: "About Us", href: `/AboutUs`, isActive: false },
 	{ key: 3, name: "Services", href: `/Services`, isActive: false },
 	{ key: 4, name: "Pricing", href: `/Pricing`, isActive: false },
