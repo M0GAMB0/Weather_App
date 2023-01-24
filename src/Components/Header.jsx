@@ -22,7 +22,7 @@ const Header = () => {
 
 	return (
 		<Navbar className="mx-4 md:mx-6 lg:mx-8" fluid={true} rounded={true}>
-			<Navbar.Brand onClick={() => history(`/`)}>
+			<Navbar.Brand onClick={() => history(`/Weather_App`)}>
 				<img src={logo} className="mr-3 h-6 sm:h-9" alt="Weather App Logo" />
 				<span
 					className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white tracking-wide"
