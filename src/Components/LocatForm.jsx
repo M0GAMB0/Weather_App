@@ -4,8 +4,11 @@ import ModalForm from "./ModalForm";
 const LocatForm = () => {
 	const [show, setShow] = useState(false);
 	return (
-		<div className="flex flex-col justify-between items-start">
-			<span className="text-9xl">Weather with us.</span>
+		<div
+			className="flex flex-col justify-between items-start w-full"
+			// style={{ border: "2px solid red" }}
+		>
+			<span className="text-7xl md:text-8xl lg:text-9xl">Weather with us.</span>
 			<h3 className="text-2xl mt-10">
 				Get all the information regarding Weather from us.
 			</h3>

@@ -7,15 +7,20 @@ import HomePage from "./Pages/HomePage";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import WeatherDisplay from "./Pages/WeatherDisplay";
+import { WeatherState } from "./WeatherContext";
 const App = () => {
+	const { currentWeather } = WeatherState();
 	return (
 		<BrowserRouter>
-			<div className=" min-h-screen pt-8">
+			<div className=" min-h-screen pt-8 sm:overflow-y-hidden overflow-x-hidden">
 				<Header />
 				<Routes>
 					<Route path="/" element={<HomePage />} exact />
 					<Route path="/AboutUs" element={<AboutUs />} />
-					<Route path="/WeatherDisplay" element={<WeatherDisplay />} />
+					<Route
+						path="/WeatherDisplay"
+						element={currentWeather && <WeatherDisplay />}
+					/>
 				</Routes>
 			</div>
 			<ToastContainer

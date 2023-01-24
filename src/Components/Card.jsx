@@ -1,9 +1,12 @@
 import React from "react";
 import partlyCloudy from "../assets/partly_Cloudy.png";
 import logo from "../assets/icon.png";
+import { WeatherState } from "../WeatherContext";
 import MiniCard from "./MiniCard";
 import locIcon from "../assets/loc.png";
 const Card = () => {
+	const { currentWeather } = WeatherState();
+
 	return (
 		<div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
 			<article
@@ -33,35 +36,51 @@ const Card = () => {
 						</h2>
 					</div>
 					<div className="flex ml-auto items-center">
-						<p className="text-grey-darker text-sm font-bold mr-1">Mumbai</p>
+						<p className="text-grey-darker text-sm font-bold mr-1">
+							{currentWeather.city === null
+								? `${currentWeather.name}, ${currentWeather.sys.country}`
+								: currentWeather.city}
+						</p>
 						<img src={locIcon} height="27px" width="27px" />
 					</div>
 				</header>
 				<main className="flex items-start flex-col justify-between p-2 ml-2 md:p-4">
 					<h1
-						className="no-underline hover:underline text-black text-4xl font-extrabold"
+						className="no-underline hover:underline text-black text-6xl font-extrabold"
 						href="#"
 						style={{ textDecoration: "none" }}
 					>
-						23&#176;C
+						{Math.round(currentWeather.main.temp)}&#176;C
 					</h1>
-					<h1 className="pt-1 text-lg font-medium">Partly Cloudy</h1>
+					<h1 className="pt-1 text-lg font-medium capitalize">
+						{currentWeather.weather[0].description}
+					</h1>
 				</main>
-				<footer className="flex items-center justify-between leading-none  md:px-2 lg:px-0">
+				<footer className="flex items-center justify-between leading-none pb-4 lg:pb-0 md:px-2 lg:px-0">
 					{/* <a
 						className="flex items-center no-underline hover:underline text-black"
 						href="#"
 					>
 						<p className="ml-2 text-sm">Saikumar</p>
 					</a> */}
-					<MiniCard bg="#19283f" label="Pressure" lvalue="800mb" color="#fff" />
+					<MiniCard
+						bg="#19283f"
+						label="Pressure"
+						lvalue={`${currentWeather.main.pressure}mb`}
+						color="#fff"
+					/>
 					<MiniCard
 						bg="#cce16a"
 						label="Visibility"
-						lvalue="4.3 km"
+						lvalue={`${(currentWeather.visibility / 1000).toFixed(1)} km`}
 						color="#000"
 					/>
-					<MiniCard bg="#fff" label="Humidity" lvalue="87%" color="#000" />
+					<MiniCard
+						bg="#fff"
+						label="Humidity"
+						lvalue={`${currentWeather.main.humidity}%`}
+						color="#000"
+					/>
 				</footer>
 			</article>
 		</div>

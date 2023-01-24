@@ -7,7 +7,7 @@ const MiniCard = ({ bg, label, lvalue, color }) => {
 			// style={{ border: "2px solid red" }}
 		>
 			<article
-				className="overflow-hidden rounded-2xl w-2/3 py-4 md:py-2 lg:py-0 lg:w-full shadow-2xl"
+				className="overflow-hidden rounded-2xl w-4/5 py-4 md:py-2 lg:py-0 lg:w-full shadow-2xl"
 				style={{ backgroundColor: bg }}
 			>
 				<header className="flex flex-col items-center justify-between leading-tight lg:p-3 md:p-3">

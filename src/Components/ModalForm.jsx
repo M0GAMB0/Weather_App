@@ -4,13 +4,27 @@ import { AsyncPaginate } from "react-select-async-paginate";
 import { GEO_API_URL, geoApiOptions } from "../Config/api";
 import { toast } from "react-toastify";
 import { WeatherState } from "../WeatherContext";
+import { useNavigate } from "react-router-dom";
 const ModalForm = ({ show, setShow }) => {
 	const [search, setSearch] = useState(null);
 	const { change } = WeatherState();
-	const handleOnChange = (searchData) => {
+	const history = useNavigate();
+
+	const handleOnChange = async (searchData) => {
 		setSearch(searchData);
-		change(searchData);
+		await change(searchData);
+		return history(`/WeatherDisplay`);
 	};
+	const HrLine = ({ color }) => (
+		<hr
+			style={{
+				color: color,
+				backgroundColor: color,
+				height: 2,
+				width: "100%",
+			}}
+		/>
+	);
 	const loadOptions = async (inputValue) => {
 		try {
 			const response = await fetch(
@@ -22,7 +36,7 @@ const ModalForm = ({ show, setShow }) => {
 				options: response_1.data.map((city) => {
 					return {
 						value: `${city.latitude} ${city.longitude}`,
-						label: `${city.name} ${city.countryCode}`,
+						label: `${city.name}, ${city.countryCode}`,
 					};
 				}),
 			};
@@ -38,7 +52,12 @@ const ModalForm = ({ show, setShow }) => {
 		}
 	};
 	const onSucces = (position) => {
-		console.log(position);
+		const { latitude, longitude } = position.coords;
+		change({
+			value: `${latitude} ${longitude}`,
+			label: null,
+		});
+		return history(`/WeatherDisplay`);
 	};
 	const onError = (err) => {
 		toast.error("You denied permission to device location");
@@ -58,15 +77,17 @@ const ModalForm = ({ show, setShow }) => {
 						</div>
 						<AsyncPaginate
 							placeholder="Search for a City"
-							debounceTimeout={1000}
+							debounceTimeout={500}
 							value={search}
 							className="text-black"
 							onChange={handleOnChange}
 							loadOptions={loadOptions}
 						/>
 					</div>
-					<div>
-						<h1 className="text-center">OR</h1>
+					<div className="flex justify-between items-center">
+						<HrLine color="#000" />
+						<h1 className="text-center font-bold px-3">OR</h1>
+						<HrLine color="#000" />
 					</div>
 					<button
 						onClick={handleOnclick}

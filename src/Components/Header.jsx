@@ -22,10 +22,13 @@ const Header = () => {
 
 	return (
 		<Navbar className="mx-4 md:mx-6 lg:mx-8" fluid={true} rounded={true}>
-			<Navbar.Brand href="#">
+			<Navbar.Brand onClick={() => history(`/`)}>
 				<img src={logo} className="mr-3 h-6 sm:h-9" alt="Weather App Logo" />
-				<span className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white">
-					Weather App
+				<span
+					className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white tracking-wide"
+					style={{ fontFamily: "'Berkshire Swash', cursive" }}
+				>
+					Weatheria
 				</span>
 			</Navbar.Brand>
 			<Navbar.Toggle />
