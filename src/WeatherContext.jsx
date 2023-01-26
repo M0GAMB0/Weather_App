@@ -3,9 +3,16 @@ import { WEATHER_API_KEY, WEATHER_API_URL } from "./Config/api";
 
 const Weather = createContext();
 const WeatherContext = ({ children }) => {
-	const [currentWeather, setCurrentWeather] = useState(null);
+	const [currentWeather, setCurrentWeather] = useState(
+		typeof JSON.parse(localStorage.getItem("currentWeather")) === "object"
+			? JSON.parse(localStorage.getItem("currentWeather"))
+			: null
+	);
 	const [foreCast, setForeCast] = useState(null);
 
+	useEffect(() => {
+		localStorage.setItem("currentWeather", JSON.stringify(currentWeather));
+	}, [currentWeather]);
 	const change = (city) => {
 		const [lat, lon] = city.value.split(" ");
 		const currentWeatherFetch = fetch(
