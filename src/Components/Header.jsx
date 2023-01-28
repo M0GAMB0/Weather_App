@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 let navigation = [
-	{ key: 1, name: "Home", href: `/`, isActive: true },
+	{ key: 1, name: "Home", href: `/Weather_App`, isActive: true },
 	{ key: 2, name: "About Us", href: `/AboutUs`, isActive: false },
 	{ key: 3, name: "Services", href: `/Services`, isActive: false },
 	{ key: 4, name: "Pricing", href: `/Pricing`, isActive: false },
@@ -22,7 +22,7 @@ const Header = () => {
 
 	return (
 		<Navbar className="mx-4 md:mx-6 lg:mx-8" fluid={true} rounded={true}>
-			<Navbar.Brand onClick={() => history(`/`)}>
+			<Navbar.Brand onClick={() => history(`/Weather_App`)}>
 				<img src={logo} className="mr-3 h-6 sm:h-9" alt="Weather App Logo" />
 				<span
 					className="self-center whitespace-nowrap text-3xl font-semibold dark:text-white tracking-wide"
