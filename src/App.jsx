@@ -8,6 +8,7 @@ import "./App.css";
 import { ToastContainer } from "react-toastify";
 import WeatherDisplay from "./Pages/WeatherDisplay";
 import { WeatherState } from "./WeatherContext";
+import Error from "./Pages/Error";
 const App = () => {
 	const { currentWeather } = WeatherState();
 	return (
@@ -21,6 +22,7 @@ const App = () => {
 						path="/WeatherDisplay"
 						element={currentWeather && <WeatherDisplay />}
 					/>
+					<Route path="*" element={<Error />} />
 				</Routes>
 			</div>
 			<ToastContainer
