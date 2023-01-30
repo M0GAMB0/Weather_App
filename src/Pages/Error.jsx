@@ -8,7 +8,7 @@ const Error = () => {
 		<div>
 			<div className=" flex justify-center items-center pt-1 px-6 md:px-10 h-full flex-col-reverse  sm:flex-row sm:pt-4">
 				<div
-					class="flex flex-col justify-between sm:justify-end items-start w-full lg:mt-auto"
+					className="flex flex-col justify-between sm:justify-end items-start w-full lg:mt-auto"
 					// style={{ border: "2px solid red" }}
 				>
 					<h1 className="font-black text-4xl md:text-7xl lg:text-8xl">Oops,</h1>

@@ -4,8 +4,16 @@ import MiniCard from "../Components/MiniCard";
 import { WeatherState } from "../WeatherContext";
 
 const WeatherDisplay = () => {
-	const { currentWeather } = WeatherState();
+	const { currentWeather, airQuality } = WeatherState();
 	const temp = `${Math.round(currentWeather.main.temp)}°C`;
+	function getMaxValueKey(obj) {
+		return Object.keys(obj).reduce(function (a, b) {
+			return obj[a] > obj[b] ? a : b;
+		});
+	}
+	const mainPollutant = `Main Pollutant : ${getMaxValueKey(
+		airQuality.list[0].components
+	)}`;
 	return (
 		<div className=" my-2  px-4 md:px-12">
 			<div className="flex flex-wrap -mx-1 lg:-mx-4">
@@ -40,7 +48,7 @@ const WeatherDisplay = () => {
 				</Card>
 				<Card
 					title="Air Quality"
-					subtitle="Main"
+					subtitle={mainPollutant}
 					loc={
 						currentWeather.city === null
 							? `${currentWeather.name}, ${currentWeather.sys.country}`
