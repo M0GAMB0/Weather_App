@@ -1,6 +1,7 @@
 import { Progress } from "flowbite-react";
 import React from "react";
 import Card from "../Components/Card";
+import HorizontalProgress from "../Components/HorizontalProgress";
 import MiniCard from "../Components/MiniCard";
 import { WeatherState } from "../WeatherContext";
 
@@ -15,6 +16,7 @@ const WeatherDisplay = () => {
 	const mainPollutant = `Main Pollutant : ${getMaxValueKey(
 		airQuality.list[0].components
 	)}`;
+	const wid = `${(airQuality.list[0].main.aqi / 5) * 100}%`;
 	return (
 		<div className=" my-2  px-4 md:px-12">
 			<div className="flex flex-wrap -mx-1 lg:-mx-4">
@@ -57,7 +59,7 @@ const WeatherDisplay = () => {
 					}
 					main={temp}
 				>
-					<Progress progress={45} color="dark" />
+					<HorizontalProgress width={wid} />
 				</Card>
 			</div>
 		</div>

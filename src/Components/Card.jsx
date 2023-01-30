@@ -8,7 +8,7 @@ const Card = ({ children, title, subtitle, loc, main }) => {
 	const { currentWeather } = WeatherState();
 
 	return (
-		<div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+		<div className="my-2 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
 			<article
 				className="bg-no-repeat bg-cover bg-center  overflow-hidden rounded-2xl shadow-2xl"
 				style={{
