@@ -46,9 +46,9 @@ const WeatherContext = ({ children }) => {
 			})
 			.catch((err) => console.log(err));
 	};
-	// console.log(currentWeather);
-	// console.log(foreCast);
-	// console.log(airQuality);
+	console.log(currentWeather);
+	console.log(foreCast);
+	console.log(airQuality);
 	return (
 		<Weather.Provider value={{ change, currentWeather, foreCast, airQuality }}>
 			{children}

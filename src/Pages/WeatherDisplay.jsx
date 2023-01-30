@@ -1,3 +1,4 @@
+import { Progress } from "flowbite-react";
 import React from "react";
 import Card from "../Components/Card";
 import MiniCard from "../Components/MiniCard";
@@ -55,7 +56,9 @@ const WeatherDisplay = () => {
 							: currentWeather.city
 					}
 					main={temp}
-				/>
+				>
+					<Progress progress={45} color="dark" />
+				</Card>
 			</div>
 		</div>
 	);
