@@ -51,9 +51,9 @@ const ModalForm = ({ show, setShow }) => {
 			alert("Your Browser doesnot support geolocation api");
 		}
 	};
-	const onSucces = (position) => {
+	const onSucces = async (position) => {
 		const { latitude, longitude } = position.coords;
-		change({
+		await change({
 			value: `${latitude} ${longitude}`,
 			label: null,
 		});

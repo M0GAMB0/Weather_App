@@ -4,7 +4,7 @@ import logo from "../assets/icon.png";
 import { WeatherState } from "../WeatherContext";
 import MiniCard from "./MiniCard";
 import locIcon from "../assets/loc.png";
-const Card = () => {
+const Card = ({ children, title, subtitle, loc, main }) => {
 	const { currentWeather } = WeatherState();
 
 	return (
@@ -29,18 +29,14 @@ const Card = () => {
 							className="no-underline hover:underline text-black font-medium text-xl cursor-pointer"
 							style={{ textDecoration: "none" }}
 						>
-							Weather
+							{title}
 						</h1>
 						<h2 className="mt-0.5 text-lg text-black font-medium text-xs">
-							What's the weather.
+							{subtitle}
 						</h2>
 					</div>
 					<div className="flex ml-auto items-center">
-						<p className="text-grey-darker text-sm font-bold mr-1">
-							{currentWeather.city === null
-								? `${currentWeather.name}, ${currentWeather.sys.country}`
-								: currentWeather.city}
-						</p>
+						<p className="text-grey-darker text-sm font-bold mr-1">{loc}</p>
 						<img src={locIcon} height="27px" width="27px" />
 					</div>
 				</header>
@@ -50,37 +46,14 @@ const Card = () => {
 						href="#"
 						style={{ textDecoration: "none" }}
 					>
-						{Math.round(currentWeather.main.temp)}&#176;C
+						{main}
 					</h1>
 					<h1 className="pt-1 text-lg font-medium capitalize">
 						{currentWeather.weather[0].description}
 					</h1>
 				</main>
 				<footer className="flex items-center justify-between leading-none pb-4 lg:pb-0 md:px-2 lg:px-0">
-					{/* <a
-						className="flex items-center no-underline hover:underline text-black"
-						href="#"
-					>
-						<p className="ml-2 text-sm">Saikumar</p>
-					</a> */}
-					<MiniCard
-						bg="#19283f"
-						label="Pressure"
-						lvalue={`${currentWeather.main.pressure}mb`}
-						color="#fff"
-					/>
-					<MiniCard
-						bg="#cce16a"
-						label="Visibility"
-						lvalue={`${(currentWeather.visibility / 1000).toFixed(1)} km`}
-						color="#000"
-					/>
-					<MiniCard
-						bg="#fff"
-						label="Humidity"
-						lvalue={`${currentWeather.main.humidity}%`}
-						color="#000"
-					/>
+					{children}
 				</footer>
 			</article>
 		</div>
