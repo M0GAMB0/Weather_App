@@ -16,7 +16,11 @@ const App = () => {
       <div className=" min-h-screen pt-8 sm:overflow-y-hidden overflow-x-hidden">
         <Header />
         <Routes>
-          <Route path="/" element={<HomePage />} exact />
+          <Route
+            path="/"
+            element={currentWeather?.name ? <WeatherDisplay /> : <HomePage />}
+            exact
+          />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route
             path="/WeatherDisplay"

@@ -2,6 +2,8 @@ import { Navbar } from "flowbite-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { WeatherState } from "../WeatherContext";
+
 let navigation = [
   { key: 1, name: "Home", href: `/`, isActive: true },
   { key: 2, name: "About Us", href: `/AboutUs`, isActive: false },
@@ -9,15 +11,24 @@ let navigation = [
   { key: 4, name: "Pricing", href: `/Pricing`, isActive: false },
   { key: 5, name: "Contact", href: `/Contact`, isActive: false },
 ];
+
 const Header = () => {
   const history = useNavigate();
   const [navBar, setNavBar] = useState(navigation);
+  const [unit, setUnit] = useState("Celsius"); // To store the selected unit
+  const { setCurrUnit } = WeatherState();
 
   const changeActiveStatus = (key, href) => {
     navBar.forEach((items) => (items.isActive = false));
     navBar[key - 1].isActive = true;
     setNavBar(navBar);
     return history(href);
+  };
+
+  const toggleUnit = () => {
+    const newUnit = unit === "Celsius" ? "Fahrenheit" : "Celsius";
+    setUnit(newUnit); // Update local state
+    setCurrUnit(newUnit); // Update the global state in WeatherContext
   };
 
   return (
@@ -57,6 +68,18 @@ const Header = () => {
             {items.name}
           </Navbar.Link>
         ))}
+        <div className="flex items-center ml-4">
+          <span className="mr-2 text-sm text-gray-800 dark:text-white">°C</span>
+          <label className="switch">
+            <input
+              type="checkbox"
+              checked={unit === "Fahrenheit"}
+              onChange={toggleUnit}
+            />
+            <span className="slider round"></span>
+          </label>
+          <span className="ml-2 text-sm text-gray-800 dark:text-white">°F</span>
+        </div>
       </Navbar.Collapse>
     </Navbar>
   );

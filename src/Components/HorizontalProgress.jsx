@@ -2,7 +2,6 @@ import { Tooltip } from "flowbite-react";
 import React from "react";
 
 const HorizontalProgress = ({ width }) => {
-  width = "60%";
   //   console.log(width);
   const numericWidth = parseInt(width, 10);
   const getQualityDetails = (numericWidth) => {

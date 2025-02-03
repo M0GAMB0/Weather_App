@@ -6,8 +6,15 @@ import MiniCard from "../Components/MiniCard";
 import { WeatherState } from "../WeatherContext";
 
 const WeatherDisplay = () => {
-  const { currentWeather, airQuality } = WeatherState();
-  const temp = `${Math.round(currentWeather.main.temp)}°C`;
+  const { currentWeather, airQuality, currUnit } = WeatherState();
+
+  const tempInCelsius = currentWeather.main.temp; // Assuming temp is in Celsius
+  const temp =
+    currUnit === "Celsius"
+      ? `${Math.round(tempInCelsius)}°C`
+      : `${Math.round((tempInCelsius * 9) / 5 + 32)}°F`;
+
+  console.log(currentWeather);
   function getMaxValueKey(obj) {
     return Object.keys(obj).reduce(function (a, b) {
       return obj[a] > obj[b] ? a : b;
@@ -17,7 +24,9 @@ const WeatherDisplay = () => {
     airQuality.list[0].components
   )}`;
   console.log("airQuality>>", airQuality);
-  const wid = `${(airQuality.list[0].main.aqi / 5) * 100}%`;
+  const widPerc = `${(airQuality.list[0].main.aqi / 5) * 100}%`;
+  console.log("widPerc >>>", widPerc);
+  const wid = `${(airQuality.list[0].main.aqi / 5) * 100}`;
   return (
     <div className=" my-2  px-4 md:px-12">
       <div className="flex flex-wrap -mx-1 lg:-mx-4">
@@ -30,6 +39,7 @@ const WeatherDisplay = () => {
               : currentWeather.city
           }
           main={temp}
+          type="weather"
         >
           <MiniCard
             bg="#19283f"
@@ -58,9 +68,10 @@ const WeatherDisplay = () => {
               ? `${currentWeather.name}, ${currentWeather.sys.country}`
               : currentWeather.city
           }
-          main={temp}
+          main={wid}
+          type="air"
         >
-          <HorizontalProgress width={wid} />
+          <HorizontalProgress width={widPerc} />
         </Card>
       </div>
     </div>
