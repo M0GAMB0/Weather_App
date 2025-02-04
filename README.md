@@ -36,11 +36,11 @@ This weather dashboard provides a clean and intuitive interface for users to qui
 
 ## Installation
 
-1. Clone the repository: ```git clone https://github.com/[your-username]/[your-repo-name].git ``` ⬇
-2. Navigate to the project directory: ```cd [your-repo-name]``` 
-3. Install dependencies: ```npm install``` or ```yarn install```
+1. Clone the repository: ```git clone https://github.com/M0GAMB0/Weather_App.git ``` ⬇
+2. Navigate to the project directory: ```cd Weather_APP``` 
+3. Install dependencies: ```npm install```
 4. Obtain an API key from OpenWeatherMap and replace the placeholder in the code.  (Explain where this placeholder is - e.g., in `src/config.js` or similar.) 🔑
-5. Start the development server: ```npm start``` or ```yarn start```
+5. Start the development server: ```npm run dev```
 
 ## Usage
 
