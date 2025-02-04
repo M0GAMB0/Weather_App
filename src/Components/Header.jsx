@@ -10,14 +10,15 @@ let navigation = [
   { key: 3, name: "Services", href: `/Services`, isActive: false },
   { key: 4, name: "Pricing", href: `/Pricing`, isActive: false },
   { key: 5, name: "Contact", href: `/Contact`, isActive: false },
+  { key: 6, name: "Change Location", href: `/change-location`, isActive: false },
 ];
 
 const Header = () => {
   const history = useNavigate();
   const [navBar, setNavBar] = useState(navigation);
   const [unit, setUnit] = useState("Celsius"); // To store the selected unit
-  const { setCurrUnit } = WeatherState();
-
+  const { currentWeather, setCurrUnit } = WeatherState();
+  console.log("vvvv >>>", currentWeather);
   const changeActiveStatus = (key, href) => {
     navBar.forEach((items) => (items.isActive = false));
     navBar[key - 1].isActive = true;
@@ -45,6 +46,7 @@ const Header = () => {
       <Navbar.Toggle />
       <Navbar.Collapse>
         {navBar.map((items) => (
+          ((currentWeather != null &&  items.key === 6) || items.key != 6) &&
           <Navbar.Link
             key={items.key}
             active={items.isActive}

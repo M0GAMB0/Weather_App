@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import ModalForm from "./ModalForm";
+import { WeatherState } from "../WeatherContext";
 
 const LocatForm = () => {
 	const [show, setShow] = useState(false);
+	const { currentWeather, airQuality } = WeatherState();
 	return (
 		<div
 			className="flex flex-col justify-between items-start w-full"
@@ -13,7 +15,7 @@ const LocatForm = () => {
 				Get all the information regarding Weather from us.
 			</h3>
 			<button onClick={() => setShow(true)} className="text-xl px-10 mt-7">
-				Get Started
+				{currentWeather?'Change Location':'Get Started'}
 			</button>
 			<ModalForm show={show} setShow={setShow} />
 		</div>

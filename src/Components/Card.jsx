@@ -62,7 +62,7 @@ const Card = ({
           </div>
         </header>
         <main className="flex items-start flex-col justify-between p-2 ml-2 md:p-3">
-          <div class="flex content-between items-center">
+          <div className="flex content-between items-center">
             <h1
               className="no-underline hover:underline text-black text-3xl font-extrabold"
               href="#"
@@ -71,7 +71,7 @@ const Card = ({
               {main}
             </h1>
             {type === "air" && (
-              <span class="bg-red-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300 mx-4">
+              <span className="bg-red-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-red-900 dark:text-red-300 mx-4">
                 AQI
               </span>
             )}

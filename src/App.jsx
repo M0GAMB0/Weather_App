@@ -26,6 +26,10 @@ const App = () => {
             path="/WeatherDisplay"
             element={currentWeather && <WeatherDisplay />}
           />
+          <Route
+            path="/change-location"
+            element={<HomePage />}
+          />
           <Route path="*" element={<Error />} />
         </Routes>
       </div>

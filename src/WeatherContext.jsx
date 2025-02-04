@@ -19,6 +19,7 @@ const WeatherContext = ({ children }) => {
       : null
   );
   const [currUnit, setCurrUnit] = useState("Celsius");
+  const [searchData, setSearchData] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("currentWeather", JSON.stringify(currentWeather));
@@ -26,6 +27,7 @@ const WeatherContext = ({ children }) => {
     localStorage.setItem("foreCast", JSON.stringify(foreCast));
   }, [airQuality]);
   const change = (city) => {
+	setSearchData(city);
     const [lat, lon] = city.value.split(" ");
     const currentWeatherFetch = fetch(
       `${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
@@ -49,15 +51,20 @@ const WeatherContext = ({ children }) => {
   };
   // Poll every 30 seconds
   useEffect(() => {
-    change(); // Initial fetch
-    const intervalId = setInterval(change, 30000); // Fetch every 30 seconds
+    if (searchData) {
+      change(searchData); // Initial fetch
 
-    // Clean up the interval on unmount
-    return () => clearInterval(intervalId);
-  }, [currentWeather.name]); // Depend on city to refetch data when it changes
+      const intervalId = setInterval(() => {
+        change(searchData); // Fetch every 30 seconds
+      }, 30000);
+
+      // Clean up the interval on unmount
+      return () => clearInterval(intervalId);
+    }
+  }, [searchData]); // Depend on city to refetch data when it changes
 
   console.log(currentWeather);
-  console.log(foreCast);
+  console.log("foreCast >>>",foreCast);
   console.log(airQuality);
   return (
     <Weather.Provider
@@ -68,6 +75,7 @@ const WeatherContext = ({ children }) => {
         airQuality,
         setCurrUnit,
         currUnit,
+		setCurrentWeather
       }}
     >
       {children}

@@ -8,11 +8,6 @@ const HomePage = ({ onSearchChange }) => {
   let history = useNavigate();
   const { currentWeather, airQuality } = WeatherState();
   console.log("currentWeather >>", currentWeather);
-  useEffect(() => {
-    if (currentWeather?.name != null) {
-      history("/WeatherDisplay");
-    }
-  }, [currentWeather.name]);
 
   return (
     <div
