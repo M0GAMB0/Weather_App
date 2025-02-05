@@ -26,6 +26,7 @@ This weather dashboard provides a clean and intuitive interface for users to qui
 - **Persistent Search:** Saves the last searched city and automatically loads its data when the user revisits the app. 💾
 - **State Management:** Uses React's Context API for efficient state management. 📦
 - **Responsive Design:** (If applicable - add this if you implemented responsive design) The dashboard is designed to be responsive and work well on different screen sizes.📱💻
+- **Switcing Units:** Allow users to switch between different units (e.g., Celsius and Fahrenheit).
 
 ## Technologies Used
 
