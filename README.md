@@ -33,8 +33,6 @@ This weather dashboard provides a clean and intuitive interface for users to qui
 - React
 - OpenWeather API
 - Context API (for state management)
-- (Add any other libraries you used, e.g., `axios` for API calls, any UI libraries, etc.)
-
 ## Installation
 
 1. Clone the repository: ```git clone https://github.com/M0GAMB0/Weather_App.git ``` ⬇
