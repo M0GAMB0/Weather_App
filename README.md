@@ -67,5 +67,4 @@ Building this weather dashboard involved several key steps:
 - **Forecast Data:** Display a multi-day weather forecast. 🗓️
 - **Improved Styling:** Enhance the UI with better styling and visual appeal.🎨
 - **Error Handling:** Implement more robust error handling for API requests and geolocation. ⚠️
-- **Unit Conversion:** Allow users to switch between different units (e.g., Celsius and Fahrenheit). 🌡️
 - **Accessibility:** Improve accessibility for users with disabilities. ♿
