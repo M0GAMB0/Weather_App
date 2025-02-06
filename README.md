@@ -25,7 +25,7 @@ This weather dashboard provides a clean and intuitive interface for users to qui
 - **API Polling:** Implements API polling to periodically update the weather data. 📡
 - **Persistent Search:** Saves the last searched city and automatically loads its data when the user revisits the app. 💾
 - **State Management:** Uses React's Context API for efficient state management. 📦
-- **Responsive Design:** (If applicable - add this if you implemented responsive design) The dashboard is designed to be responsive and work well on different screen sizes.📱💻
+- **Responsive Design:** The dashboard is designed to be responsive and work well on different screen sizes.📱💻
 - **Switching Units:** Allow users to switch between different units (e.g., Celsius and Fahrenheit).
 
 ## Technologies Used
@@ -53,13 +53,13 @@ This weather dashboard provides a clean and intuitive interface for users to qui
 
 Building this weather dashboard involved several key steps:
 
-1. **API Integration:** I started by integrating the OpenWeather API.  I obtained an API key and used `fetch` (or `axios`) to make requests to the API endpoints for current weather data. I carefully handled API responses, including error handling. 🔌
-2. **Component Development:** I created reusable React components for different parts of the UI, such as the search bar, weather display, and (if applicable) any other UI elements. This modular approach made the code more organized and maintainable. 🧩
+1. **API Integration:** I started by integrating the OpenWeather API.  I obtained an API key and used `fetch` to make requests to the API endpoints for current weather data. I carefully handled API responses, including error handling. 🔌
+2. **Component Development:** I created reusable React components for different parts of the UI, such as the search bar, weather display, and  any other UI elements. This modular approach made the code more organized and maintainable. 🧩
 3. **State Management with Context API:** I implemented the Context API to manage the application's state, including the current weather data, searched city, and loading state. This centralized state management simplified data flow and avoided prop drilling. 📦
 4. **Geolocation:** I added the geolocation feature using the browser's Geolocation API. I handled permissions and potential errors gracefully. 📍
-5. **API Polling:** I used `setInterval` (or a similar approach) to implement API polling, ensuring the weather data is updated periodically. 🔄
-6. **Persistent Search:**  I used `localStorage` (or similar) to store the last searched city.  When the app loads, I check if a previously searched city exists and automatically fetch its weather data. 💾
-7. **User Interface:** I focused on creating a clean and intuitive user interface. I used appropriate weather icons and displayed information in a clear and concise manner. (Mention any UI libraries or styling approaches used). ✨
+5. **API Polling:** I used `setInterval` to implement API polling, ensuring the weather data is updated periodically. 🔄
+6. **Persistent Search:**  I used `localStorage`  to store the last searched city.  When the app loads, I check if a previously searched city exists and automatically fetch its weather data. 💾
+7. **User Interface:** I focused on creating a clean and intuitive user interface. I used appropriate weather icons and displayed information in a clear and concise manner. ✨
 
 ## Future Enhancements
 
